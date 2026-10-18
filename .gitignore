@@ -1,0 +1,4 @@
+# No commitear datos locales
+plugin/pack/
+*.swp
+*.swo
