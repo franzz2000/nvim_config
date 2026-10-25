@@ -90,6 +90,31 @@ return {
 
     config = function()
       local cmp = require("cmp")
+      local ls = require("luasnip")
+
+      -- Cargar automáticamente los snippets de Quarto
+      require("snippets.quarto")
+
+        -- Expandir snippets con Ctrl+K
+        vim.keymap.set("i", "<C-k>", function()
+          if ls.expandable() then
+            ls.expand()
+          end
+        end, { desc = "Expandir snippet" })
+
+        -- Avanzar al siguiente campo con Ctrl+L
+        vim.keymap.set({ "i", "s" }, "<C-l>", function()
+          if ls.jumpable(1) then
+            ls.jump(1)
+          end
+        end, { desc = "Siguiente campo del snippet" })
+
+        -- Retroceder al campo anterior con Ctrl+H
+        vim.keymap.set({ "i", "s" }, "<C-h>", function()
+          if ls.jumpable(-1) then
+            ls.jump(-1)
+          end
+        end, { desc = "Campo anterior del snippet" })
 
       cmp.setup({
         completion = {
