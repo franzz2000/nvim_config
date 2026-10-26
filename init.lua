@@ -12,3 +12,4 @@ require("config.options")
 
 -- Inicializar lazy.nvim y plugins
 require("config.lazy")
+
